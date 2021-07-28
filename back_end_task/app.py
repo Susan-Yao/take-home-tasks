@@ -16,9 +16,13 @@ db = PostgresqlDatabase('HelloFresh', host='localhost', port=5432, user='postgre
 from user_module import user_bp
 from menu_module import menu_bp
 from recipe_module import recipe_bp
+from menu_review_module import menu_review_bp
+from recipe_review_module import recipe_review_bp
 app.register_blueprint(user_bp, url_prefix='/user')
 app.register_blueprint(menu_bp, url_prefix='/menu')
 app.register_blueprint(recipe_bp, url_prefix='/recipe')
+app.register_blueprint(menu_review_bp, url_prefix='/menu_review')
+app.register_blueprint(recipe_review_bp, url_prefix='/recipe_review')
 
 def token_required(f):
     @wraps(f)
