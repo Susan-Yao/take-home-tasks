@@ -40,12 +40,12 @@ def get_user_details():
     user = User.get_or_none(User.user_id == int(user_id))
 
     if user is not None: # the user exists
-        result = []
+        result = {}
         name = user.user_name
         email = user.user_email
-        result.append(user_id)
-        result.append(name)
-        result.append(email)
+        result['user_id'] = user_id
+        result['name'] = name
+        result['email'] = email
         return jsonify(status = 1, result = result)
     else:
         return jsonify(status = -1, error = "This user does not exist.")

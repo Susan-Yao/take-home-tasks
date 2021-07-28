@@ -40,14 +40,14 @@ def get_menu_details():
     menu = Menu.get_or_none(Menu.menu_id == int(menu_id))
 
     if menu is not None: # the menu exists
-        result = []
+        result = {}
         name = menu.menuname
         start = menu.start_date
         end = menu.end_date
-        result.append(menu_id)
-        result.append(name)
-        result.append(start.strftime('%Y-%m-%d'))
-        result.append(end.strftime('%Y-%m-%d'))
+        result['menu_id'] = menu_id
+        result['name'] = name
+        result['start'] = start.strftime('%Y-%m-%d')
+        result['end'] = end.strftime('%Y-%m-%d')
         return jsonify(status = 1, result = result)
     else:
         return jsonify(status = -1, error = "This menu does not exist.")
