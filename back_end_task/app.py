@@ -2,7 +2,6 @@ from functools import wraps
 
 from flask import Flask, request, jsonify, json
 from flask_cors import *
-from flask_restplus import Api
 
 # peewee database
 from peewee import Database, PostgresqlDatabase
