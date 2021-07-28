@@ -28,6 +28,7 @@ app.register_blueprint(recipe_review_bp, url_prefix='/recipe_review')
 app.register_blueprint(menu_recipe_bp, url_prefix='/menu_recipe')
 
 # API token
+# Can be used by add "@token_required" under each API
 def token_required(f):
     @wraps(f)
     def decorated(*args, **kwargs):

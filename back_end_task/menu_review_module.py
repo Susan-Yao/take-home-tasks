@@ -1,4 +1,3 @@
-from app import token_required # can be used by add "@token_required" under each API
 from flask import Blueprint, jsonify, request, json
 from models import User, Menu, Menu_Review
 import datetime
