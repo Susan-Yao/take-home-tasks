@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, request, json
-from models import User, Menu
+from models import User, Menu, Menu_Recipe, Menu_Review
 import datetime
 menu_bp = Blueprint('menu', __name__) # register the blueprint
 
@@ -97,7 +97,17 @@ def delete_menu():
     menu = Menu.get_or_none(Menu.menu_id == int(menu_id))
 
     if menu is not None: # the menu exists
+
+        # delete in menu-recipe
+        query = Menu_Recipe.delete().where(Menu_Recipe.menu_id == int(menu_id))
+        query.execute()
+
+        # delete in menu-review
+        query2 = Menu_Review.delete().where(Menu_Review.id == int(menu_id))
+        query2.execute()
+
         menu.delete_instance()
+
         return jsonify(status = 1, hint = "The menu is deleted successfully")
     else:
         return jsonify(status = -1, error = "This menu does not exist.")
