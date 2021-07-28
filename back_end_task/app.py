@@ -27,6 +27,7 @@ app.register_blueprint(menu_review_bp, url_prefix='/menu_review')
 app.register_blueprint(recipe_review_bp, url_prefix='/recipe_review')
 app.register_blueprint(menu_recipe_bp, url_prefix='/menu_recipe')
 
+# API token
 def token_required(f):
     @wraps(f)
     def decorated(*args, **kwargs):
@@ -42,12 +43,6 @@ def token_required(f):
 @app.route('/')
 def hello_world():
     return 'Hello World!'
-
-@app.route('/get_all_recipes', methods = ['GET'])
-# @token_required
-def get_all_recipes():
-    return 'get_all_recipes!'
-
 
 if __name__ == '__main__':
     app.run()
