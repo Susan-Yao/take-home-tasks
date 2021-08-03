@@ -1,6 +1,0 @@
-Unit Testing is conducted by using Python framework "unittest".
-There is a unit testing file for each module, namely all Python files prefixed with "test_" in this folder.
-These Python files can be run by using command line "python test_xxx.py"
-(e.g., command: "python test_menu.py" can run all test cases for menu module)
-
-
