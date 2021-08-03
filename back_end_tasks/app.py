@@ -1,5 +1,5 @@
 from functools import wraps
-
+import os
 from flask import Flask, request, jsonify, json
 from flask_cors import *
 
@@ -10,7 +10,13 @@ app = Flask(__name__)
 
 CORS(app, supports_credentials=True)
 
-db = PostgresqlDatabase('HelloFresh', host='localhost', port=5432, user='postgres', password='yyxx')
+# get db connection details from environment variables
+db_name = os.environ.get("DB_NAME")
+user_name = os.environ.get("USER_NAME")
+port_num = os.environ.get("PORT_NUM")
+db_pw = os.environ.get("DB_PW")
+
+db = PostgresqlDatabase(db_name, host='localhost', port=port_num, user=user_name, password=db_pw)
 
 from user_module import user_bp
 from menu_module import menu_bp
